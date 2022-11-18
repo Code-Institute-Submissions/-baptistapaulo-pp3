@@ -4,6 +4,14 @@
 
 import pyfiglet
 import os
+import time
+
+def cls_terminal():
+    """
+    Clear terminal with os.system
+    https://stackoverflow.com/questions/2084508/clear-terminal-in-python
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 # Welcome Message
 logo = pyfiglet.figlet_format("IP Subnetting")
@@ -15,6 +23,7 @@ print("Engineers will be able to:\n")
 print("- calculate available IPs\n")
 print("- determine subnet range\n")
 print("- generate a random IP\n")
-
-# Clear Terminal
-os.system('cls' if os.name == 'nt' else 'clear')
+input("Press Enter to continue...")
+cls_terminal()
+logo = pyfiglet.figlet_format("IP Subnetting")
+print(logo)
