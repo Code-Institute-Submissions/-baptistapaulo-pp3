@@ -8,7 +8,7 @@ import pyfiglet
 logo = pyfiglet.figlet_format("IP Subnetting")
 print(logo)
 print("Welcome to the 'IP Subnet Calculator' tool.\n")
-print("This tool pretends to help negineers on their "
+print("This tool pretends to help engineers on their "
       "daily support tasks or projects.\n")
 print("Engineers will be able to:\n")
 print("- calculate available IPs\n")
