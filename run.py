@@ -3,6 +3,7 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 import pyfiglet
+import os
 
 # Welcome Message
 logo = pyfiglet.figlet_format("IP Subnetting")
@@ -14,3 +15,6 @@ print("Engineers will be able to:\n")
 print("- calculate available IPs\n")
 print("- determine subnet range\n")
 print("- generate a random IP\n")
+
+# Clear Terminal
+os.system('cls' if os.name == 'nt' else 'clear')
