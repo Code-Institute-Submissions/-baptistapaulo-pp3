@@ -14,7 +14,6 @@
         * [Generate IP within subnet range](#Generate-IP-within-subnet-range)
 * [Design](#Design)
     * [Heroku](#Heroku)
-    * [Flow Chart](#Flow-Chart)
     * [Limitations](Limitations)
 * [Testing](#Testing)
     * [Technologies](Technologies)
@@ -92,13 +91,9 @@ IP subnetting is a task requiring proficiency for those engineers working in sup
 
 ## Design
 ### Heroku
-![main-page](/assets/images/main-page.PNG)
-![results-page](/assets/images/results-page.PNG)
-
-### Flow Chart
-![ip-conversion](/assets/images/ip-conversion.PNG)
-![program](/assets/images/program.PNG)
-![subnet](/assets/images/subnet.PNG)
+![main-page](/assets/images/heroku_main_page.PNG)
+![input-page](/assets/images/heroku_input_page.PNG)
+![options-page](/assets/images/heroku_options_page.PNG)
 
 ### Limitations
 This tool has a potential for further features and capabilities but these are not yet implemented.
@@ -116,14 +111,14 @@ This tool has a potential for further features and capabilities but these are no
 * W3Schools - Code reference for Python [here](https://www.w3schools.com/python/default.asp).
 
 #### PEP8
-![Run.py](/assets/images/runpy.PNG)
+![Run.py](/assets/images/pep8_checks.PNG)
 #### Python
-No errors found.
+No syntax errors found.
 ### Testing-Issues
 * Bugs identified that need to be fixed.
-    * 1
-    * 2
-    * 3
+    * IP address and subnet mask validation not deployed (input values not validated)
+    * menu cycle not working so there is no return to main page after results
+    * menu options not working so new functions required to present the three scenarios
 
 [Table-of-Contents](#Table-of-Contents)
 

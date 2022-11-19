@@ -12,7 +12,7 @@ def cls_terminal():
 
 def dec2bin(integer):
     """
-    Convert IP address string to binary 
+    Convert IP address string to binary
     https://stackoverflow.com/questions/2733788/
     convert-ip-address-string-to-binary-in-python
     """
@@ -118,6 +118,8 @@ def menu():
     )
 
 # Welcome Message
+
+
 logo = pyfiglet.figlet_format("IP Subnetting")
 print(logo)
 print("Welcome to the 'IP Subnet Calculator' tool.\n")
