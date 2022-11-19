@@ -1,6 +1,5 @@
 import pyfiglet
 import os
-import time
 
 
 def cls_terminal():
@@ -13,8 +12,9 @@ def cls_terminal():
 
 def dec2bin(integer):
     """
-    Convert IP address string to binary
-    https://stackoverflow.com/questions/2733788/convert-ip-address-string-to-binary-in-python
+    Convert IP address string to binary 
+    https://stackoverflow.com/questions/2733788/
+    convert-ip-address-string-to-binary-in-python
     """
     binary = '.'.join([bin(int(x)+256)[3:] for x in integer.split('.')])
     return binary
@@ -107,59 +107,15 @@ def miniIP(ntwrkID):
     return ".".join(str(miniIPs[x]) for x in range(4))
 
 
-def validity():
-    # Checking IP address validity
-    ip = input("Enter the NETWORK [x.x.x.x]: ")
-
-    while True:
-            # Checking octets
-            a = ip.split('.')
-
-            if (len(a) == 4) and (1 <= int(a[0]) <= 223) and (int(a[0]) != 127) and (int(a[0]) != 169 or int(a[1]) != 254) and (0 <= int(a[1]) <= 255 and 0 <= int(a[2]) <= 255 and 0 <= int(a[3]) <= 255):
-                break
-
-            else:
-                print("\nThe IP address is INVALID! Please retry!\n")
-                continue
-
-    # Checking Subnet Mask validity
-    while True:
-            subnet = input("Enter the MASK [y.y.y.y]: ")
-            # Checking octets
-            b = subnet.split('.')
-
-            if (len(b) == 4) and (int(b[0]) == 255) and (int(b[1]) in masks) and (int(b[2]) in masks) and (int(b[3]) in masks) and (int(b[0]) >= int(b[1]) >= int(b[2]) >= int(b[3])):
-              
-                break
-
-            else:
-                print("\nThe subnet mask is INVALID! Please retry!\n")
-                continue
-
-
 def menu():
     """
     List the options to be selected by engineers.
     """
-    while True:
-        option = input(
-            "[1] Calculate available IPs\n"
-            "[2] Determine subnet range\n"
-            "[3] Generate a random IP\n"
-        )
-        if option == '1':
-            cls_terminal()
-            choice1()
-            break
-        if option == '2':
-            cls_terminal()
-            choice2()
-            break
-        else:
-            cls_terminal()
-            choice3()
-            break
-
+    option = input(
+        "[1] Calculate available IPs\n"
+        "[2] Determine subnet range\n"
+        "[3] Generate a random IP\n"
+    )
 
 # Welcome Message
 logo = pyfiglet.figlet_format("IP Subnetting")
@@ -177,7 +133,8 @@ cls_terminal()
 logo = pyfiglet.figlet_format("IP Subnetting")
 print(logo)
 print("Provide the following details.\n")
-validity()
+ip = input("Enter the NETWORK [x.x.x.x]: ")
+subnet = input("Enter the MASK [y.y.y.y]: ")
 input("\nPress Enter to continue...")
 cls_terminal()
 # Option's Message
@@ -193,14 +150,13 @@ wildcard_binary = find_wildcard(dec2bin(Subnet))
 WildCard = convert_decimal(wildcard_binary)
 print('Wildcard:', WildCard, '->', wildcard_binary)
 networkID = andOP(IP, Subnet)
-network_Binary = Int2Bin(networkID)
+network_Binary = dec2bin(networkID)
 print('Network ID:', networkID, "->", network_Binary)
 broadcastIP = orOP(networkID, WildCard)
-broadcastIP_binary = Int2Bin(broadcastIP)
+broadcastIP_binary = dec2bin(broadcastIP)
 print('Broadcast IP:', broadcastIP, "->", broadcastIP_binary)
-maxIP = maxiIP(broadcastIP)
-maxIP_binary = Int2Bin(maxIP)
+maxIP_binary = dec2bin(maxIP)
 print('Max. IP:', maxIP, "->", maxIP_binary)
 minIP = miniIP(networkID)
-minIP_binary = Int2Bin(networkID)
+minIP_binary = dec2bin(networkID)
 print('Min. IP:', minIP, "->", minIP_binary)
