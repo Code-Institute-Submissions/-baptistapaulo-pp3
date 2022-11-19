@@ -23,6 +23,27 @@ def dec2bin(integer):
     binary = '.'.join([bin(int(x)+256)[3:] for x in integer.split('.')])
     return binary
 
+def complement(number):
+    if number == '0':
+        number = '1'
+    elif number == '.':
+        pass
+    else:
+        number = '0'
+    return number
+
+def find_wildcard(binary_subnet):
+    binary_list = list(binary_subnet)
+    wildcard = ''.join(complement(binary_list[y]) for y in range(len(binary_list)))
+    return wildcard
+
+def convert_decimal(wildcard_Binary):
+    binary = {}
+    for x in range(4):
+        binary[x] = int(wildcard_Binary.split(".")[x], 2)
+    dec = ".".join(str(binary[x]) for x in range(4))
+    return dec
+
 def menu():
     """
     List the options to be selected by engineers.
@@ -78,3 +99,6 @@ ip_binary = dec2bin(ip)
 subnet_binary = dec2bin(subnet)
 print('\nIP:', IP, "->", ip_binary)
 print('Subnet:', Subnet, "->", subnet_binary)
+wildcard_binary = find_wildcard(dec2bin(Subnet))
+WildCard = convert_decimal(wildcard_binary)
+print('Wildcard:', WildCard, '->', wildcard_binary)
