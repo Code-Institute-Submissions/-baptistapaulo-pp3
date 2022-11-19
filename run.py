@@ -15,6 +15,14 @@ def cls_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+def dec2bin(integer):
+    """
+    Convert IP address string to binary
+    https://stackoverflow.com/questions/2733788/convert-ip-address-string-to-binary-in-python
+    """
+    binary = '.'.join([bin(int(x)+256)[3:] for x in integer.split('.')])
+    return binary
+
 def menu():
     """
     List the options to be selected by engineers.
@@ -37,6 +45,8 @@ def menu():
             cls_terminal()
             choice3()
             break
+
+
 
 
 # Welcome Message
@@ -64,3 +74,7 @@ logo = pyfiglet.figlet_format("IP Subnetting")
 print(logo)
 print("Which option would you like to select?\n")
 menu()
+ip_binary = dec2bin(ip)
+subnet_binary = dec2bin(subnet)
+print('\nIP:', IP, "->", ip_binary)
+print('Subnet:', Subnet, "->", subnet_binary)
