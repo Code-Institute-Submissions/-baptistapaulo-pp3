@@ -176,6 +176,5 @@ So a fork is a copy of a repository. Forking a repository allows you to freely e
 
 ### Acknowledgements
 * Huge thank you to my mentor **Ronan McClelland** for his guidance throughout my project.
-* Some inspiration was found on this site [here]() so credits to its Author.
 
 [Table-of-Contents](#Table-of-Contents)
