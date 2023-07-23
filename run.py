@@ -191,3 +191,6 @@ print('Max. IP:', maxIP)
 minIP = miniIP(networkID)
 minIP_binary = dec2bin(networkID)
 print('Min. IP:', minIP)
+
+if __name__ == '__main__':
+    main()  # Call main function
