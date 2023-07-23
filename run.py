@@ -114,7 +114,7 @@ def miniIP(networkID):
     """
     This code is based on
     https://github.com/EmreOvunc/Subnetting/blob/master/Subnetting.py
-    """    
+    """
     miniIPs = networkID.split(".")
     if int(networkID.split(".")[3]) + 1 == 256:
         if int(networkID.split(".")[2]) + 1 == 256:
@@ -145,20 +145,13 @@ def menu():
         "[3] Generate a random IP\n"
     )
 
-# Welcome Message
+
+def questions():
+    """
+    Main function to call other functions in the application.
+    """
 
 
-logo = pyfiglet.figlet_format("IP Subnetting")
-print(logo)
-print("Welcome to the 'IP Subnet Calculator' tool.\n")
-print("This tool pretends to help engineers on their "
-      "daily support tasks or projects.\n")
-print("Engineers will be able to:\n")
-print("- calculate available IPs\n")
-print("- determine subnet range\n")
-print("- generate a random IP\n")
-input("Press Enter to continue...")
-cls_terminal()
 # Query's Message for Data
 logo = pyfiglet.figlet_format("IP Subnetting")
 print(logo)
@@ -191,6 +184,30 @@ print('Max. IP:', maxIP)
 minIP = miniIP(networkID)
 minIP_binary = dec2bin(networkID)
 print('Min. IP:', minIP)
+
+
+def main():
+    """
+    Main function to call other functions in the application.
+    """
+    # Call questions
+    questions()
+
+
+# Welcome Message
+
+
+logo = pyfiglet.figlet_format("IP Subnetting")
+print(logo)
+print("Welcome to the 'IP Subnet Calculator' tool.\n")
+print("This tool pretends to help engineers on their "
+      "daily support tasks or projects.\n")
+print("Engineers will be able to:\n")
+print("- calculate available IPs\n")
+print("- determine subnet range\n")
+print("- generate a random IP\n")
+input("Press Enter to continue...")
+cls_terminal()
 
 if __name__ == '__main__':
     main()  # Call main function
