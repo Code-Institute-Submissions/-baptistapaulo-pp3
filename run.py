@@ -1,5 +1,6 @@
 import pyfiglet
 import os
+import re
 
 
 def cls_terminal():
@@ -7,7 +8,7 @@ def cls_terminal():
     Clear terminal with os.system
     https://stackoverflow.com/questions/2084508/clear-terminal-in-python
     """
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
 
 
 def dec2bin(integer):
@@ -16,8 +17,9 @@ def dec2bin(integer):
     https://stackoverflow.com/questions/2733788/
     convert-ip-address-string-to-binary-in-python
     """
-    binary = '.'.join([bin(int(x)+256)[3:] for x in integer.split('.')])
+    binary = ".".join([bin(int(x) + 256)[3:] for x in integer.split(".")])
     return binary
+
 
 # Wildcard Mask
 
@@ -27,12 +29,12 @@ def complement(number):
     This code is based on
     https://github.com/EmreOvunc/Subnetting/blob/master/Subnetting.py
     """
-    if number == '0':
-        number = '1'
-    elif number == '.':
+    if number == "0":
+        number = "1"
+    elif number == ".":
         pass
     else:
-        number = '0'
+        number = "0"
     return number
 
 
@@ -42,8 +44,7 @@ def find_wildcard(binary_subnet):
     https://github.com/EmreOvunc/Subnetting/blob/master/Subnetting.py
     """
     binary_list = list(binary_subnet)
-    wildcard = ''.join(complement(binary_list[y])
-                       for y in range(len(binary_list)))
+    wildcard = "".join(complement(binary_list[y]) for y in range(len(binary_list)))
     return wildcard
 
 
@@ -57,6 +58,7 @@ def convert_decimal(wildcard_Binary):
         binary[x] = int(wildcard_Binary.split(".")[x], 2)
     dec = ".".join(str(binary[x]) for x in range(4))
     return dec
+
 
 # Network ID
 
@@ -72,6 +74,7 @@ def andOP(IP1, IP2):
     ID = ".".join(str(ID_list[z]) for z in range(4))
     return ID
 
+
 # Broadcast IP
 
 
@@ -85,6 +88,7 @@ def orOP(IP1, IP2):
         Broadcast_list[z] = int(IP1.split(".")[z]) | int(IP2.split(".")[z])
     broadcast = ".".join(str(Broadcast_list[c]) for c in range(4))
     return broadcast
+
 
 # Max IP
 
@@ -106,6 +110,7 @@ def maxiIP(broadcastIP):
     else:
         maxIPs[3] = int(broadcastIP.split(".")[3]) - 1
     return ".".join(str(maxIPs[x]) for x in range(4))
+
 
 # Min IP
 
@@ -133,6 +138,25 @@ def miniIP(networkID):
     else:
         miniIPs[3] = int(networkID.split(".")[3]) + 1
     return ".".join(str(miniIPs[x]) for x in range(4))
+
+
+
+# IPv4 Address Validation
+
+
+def is_valid_ipv4(ip):
+    # Define the IPv4 address pattern
+    ipv4_pattern = re.compile(r'^(\d{1,3}\.){3}\d{1,3}$')
+
+    # Check if the input matches the pattern
+    if ipv4_pattern.match(ip):
+        # Split the address into its octets
+        octets = ip.split('.')
+        
+        # Check if each octet is in the valid range (0-255)
+        if all(0 <= int(octet) <= 255 for octet in octets):
+            return True
+    return False
 
 
 def menu():
@@ -167,23 +191,23 @@ print("Which option would you like to select?\n")
 menu()
 ip_binary = dec2bin(ip)
 subnet_binary = dec2bin(subnet)
-print('\nIP:', ip)
-print('Subnet:', subnet)
+print("\nIP:", ip)
+print("Subnet:", subnet)
 wildcard_binary = find_wildcard(dec2bin(subnet))
 WildCard = convert_decimal(wildcard_binary)
-print('Wildcard:', WildCard)
+print("Wildcard:", WildCard)
 networkID = andOP(ip, subnet)
 network_Binary = dec2bin(networkID)
-print('Network ID:', networkID)
+print("Network ID:", networkID)
 broadcastIP = orOP(networkID, WildCard)
 broadcastIP_binary = dec2bin(broadcastIP)
-print('Broadcast IP:', broadcastIP)
+print("Broadcast IP:", broadcastIP)
 maxIP = maxiIP(broadcastIP)
 maxIP_binary = dec2bin(maxIP)
-print('Max. IP:', maxIP)
+print("Max. IP:", maxIP)
 minIP = miniIP(networkID)
 minIP_binary = dec2bin(networkID)
-print('Min. IP:', minIP)
+print("Min. IP:", minIP)
 
 
 def main():
@@ -200,8 +224,10 @@ def main():
 logo = pyfiglet.figlet_format("IP Subnetting")
 print(logo)
 print("Welcome to the 'IP Subnet Calculator' tool.\n")
-print("This tool pretends to help engineers on their "
-      "daily support tasks or projects.\n")
+print(
+    "This tool pretends to help engineers on their "
+    "daily support tasks or projects.\n"
+)
 print("Engineers will be able to:\n")
 print("- calculate available IPs\n")
 print("- determine subnet range\n")
@@ -209,5 +235,5 @@ print("- generate a random IP\n")
 input("Press Enter to continue...")
 cls_terminal()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()  # Call main function
