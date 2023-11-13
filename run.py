@@ -173,72 +173,67 @@ def questions():
     """
     Main function to call other functions in the application.
     """
-
-
-# Query's Message for Data
-logo = pyfiglet.figlet_format("IP Subnetting")
-print(logo)
-print("Provide the following details.\n")
-ip = input("Enter the NETWORK [A.B.C.D]: ")
-subnet = input("Enter the MASK [X.Y.Z.W]: ")
-ip_address = ip
-if is_valid_ipv4(ip_address):
-    print(f"{ip_address} is a valid IPv4 address.")
-else:
-    print(f"{ip_address} is not a valid IPv4 address.")
-input("\nPress Enter to continue...")
-cls_terminal()
-# Option's Message
-logo = pyfiglet.figlet_format("IP Subnetting")
-print(logo)
-print("Which option would you like to select?\n")
-menu()
-ip_binary = dec2bin(ip)
-subnet_binary = dec2bin(subnet)
-print("\nIP:", ip)
-print("Subnet:", subnet)
-wildcard_binary = find_wildcard(dec2bin(subnet))
-WildCard = convert_decimal(wildcard_binary)
-print("Wildcard:", WildCard)
-networkID = andOP(ip, subnet)
-network_Binary = dec2bin(networkID)
-print("Network ID:", networkID)
-broadcastIP = orOP(networkID, WildCard)
-broadcastIP_binary = dec2bin(broadcastIP)
-print("Broadcast IP:", broadcastIP)
-maxIP = maxiIP(broadcastIP)
-maxIP_binary = dec2bin(maxIP)
-print("Max. IP:", maxIP)
-minIP = miniIP(networkID)
-minIP_binary = dec2bin(networkID)
-print("Min. IP:", minIP)
+    # Query's Message for Data
+    logo = pyfiglet.figlet_format("IP Subnetting")
+    print(logo)
+    print("Provide the following details.\n")
+    ip = input("Enter the NETWORK [A.B.C.D]: ")
+    subnet = input("Enter the MASK [X.Y.Z.W]: ")
+    ip_address = ip
+    if is_valid_ipv4(ip_address):
+        print(f"{ip_address} is a valid IPv4 address.")
+    else:
+        print(f"{ip_address} is not a valid IPv4 address.")
+    input("\nPress Enter to continue...")
+    cls_terminal()
+    # Option's Message
+    logo = pyfiglet.figlet_format("IP Subnetting")
+    print(logo)
+    print("Which option would you like to select?\n")
+    menu()
+    ip_binary = dec2bin(ip)
+    subnet_binary = dec2bin(subnet)
+    print("\nIP:", ip)
+    print("Subnet:", subnet)
+    wildcard_binary = find_wildcard(dec2bin(subnet))
+    WildCard = convert_decimal(wildcard_binary)
+    print("Wildcard:", WildCard)
+    networkID = andOP(ip, subnet)
+    network_Binary = dec2bin(networkID)
+    print("Network ID:", networkID)
+    broadcastIP = orOP(networkID, WildCard)
+    broadcastIP_binary = dec2bin(broadcastIP)
+    print("Broadcast IP:", broadcastIP)
+    maxIP = maxiIP(broadcastIP)
+    maxIP_binary = dec2bin(maxIP)
+    print("Max. IP:", maxIP)
+    minIP = miniIP(networkID)
+    minIP_binary = dec2bin(networkID)
+    print("Min. IP:", minIP)
 
 
 def main():
     """
     Main function to call other functions in the application.
     """
+    # Welcome Message
+    logo = pyfiglet.figlet_format("IP Subnetting")
+    print(logo)
+    print("Welcome to the 'IP Subnet Calculator' tool.\n")
+    print(
+        "This tool pretends to help engineers on their "
+        "daily support tasks or projects.\n"
+    )
+    print("Engineers will be able to:\n")
+    print("- calculate available IPs\n")
+    print("- determine subnet range\n")
+    print("- generate a random IP\n")
+    input("Press Enter to continue...")
+    cls_terminal()
     # Call questions
     menu()
     questions()
 
-
-# Welcome Message
-
-
-logo = pyfiglet.figlet_format("IP Subnetting")
-print(logo)
-print("Welcome to the 'IP Subnet Calculator' tool.\n")
-print(
-    "This tool pretends to help engineers on their "
-    "daily support tasks or projects.\n"
-)
-print("Engineers will be able to:\n")
-print("- calculate available IPs\n")
-print("- determine subnet range\n")
-print("- generate a random IP\n")
-input("Press Enter to continue...")
-cls_terminal()
 
 if __name__ == "__main__":
     main()  # Call main function
