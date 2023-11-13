@@ -162,14 +162,20 @@ def menu():
     """
     List the options to be selected by engineers.
     """
+    # Loop to keep code running while validate false
+    while True:
     option = input(
         "[1] Calculate available IPs\n"
         "[2] Determine subnet range\n"
         "[3] Generate a random IP\n"
     )
+    # Validate if the user provided a right answer
+    if validation(option):
+            cls_terminal()
+            break
 
 
-def questions():
+def questions1():
     """
     Main function to call other functions in the application.
     """
@@ -186,6 +192,12 @@ def questions():
         print(f"{ip_address} is not a valid IPv4 address.")
     input("\nPress Enter to continue...")
     cls_terminal()
+
+
+def questions2():
+    """
+    Main function to call other functions in the application.
+    """
     # Option's Message
     logo = pyfiglet.figlet_format("IP Subnetting")
     print(logo)
@@ -212,6 +224,32 @@ def questions():
     print("Min. IP:", minIP)
 
 
+def validation(answer):
+    """
+    Function to check if an answer is valid with the data provided.
+    """
+    try:
+        # Check if received the specific value
+        if answer != '1' and answer != '2' and answer != '3':
+            # If this is not a valid number you receive a message error
+            raise ValueError(
+                f'''
+            --------------- WARNING ---------------
+            This answer {answer} is incorrect,
+            Be sure to type it correctly
+            < 1 > or < 2 > or < 3 >
+            ----------------------- ---------------
+            '''
+            )
+    except ValueError as err:
+        # Check if it received a integer number if not receive a message
+        cls_terminal()
+        print(f"{err}")
+        return False
+    # Return true if didn't have error
+    return True
+
+
 def main():
     """
     Main function to call other functions in the application.
@@ -232,7 +270,8 @@ def main():
     cls_terminal()
     # Call questions
     menu()
-    questions()
+    questions1()
+    questions2()
 
 
 if __name__ == "__main__":
