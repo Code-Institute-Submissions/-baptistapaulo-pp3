@@ -140,19 +140,18 @@ def miniIP(networkID):
     return ".".join(str(miniIPs[x]) for x in range(4))
 
 
-
 # IPv4 Address Validation
 
 
 def is_valid_ipv4(ip):
     # Define the IPv4 address pattern
-    ipv4_pattern = re.compile(r'^(\d{1,3}\.){3}\d{1,3}$')
+    ipv4_pattern = re.compile(r"^(\d{1,3}\.){3}\d{1,3}$")
 
     # Check if the input matches the pattern
     if ipv4_pattern.match(ip):
         # Split the address into its octets
-        octets = ip.split('.')
-        
+        octets = ip.split(".")
+
         # Check if each octet is in the valid range (0-255)
         if all(0 <= int(octet) <= 255 for octet in octets):
             return True
@@ -220,6 +219,7 @@ def main():
     Main function to call other functions in the application.
     """
     # Call questions
+    menu()
     questions()
 
 
