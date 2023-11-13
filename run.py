@@ -63,7 +63,7 @@ def convert_decimal(wildcard_Binary):
 # Network ID
 
 
-def andOP(IP1, IP2):
+def andop(IP1, IP2):
     """
     This code is based on
     https://github.com/EmreOvunc/Subnetting/blob/master/Subnetting.py
@@ -78,7 +78,7 @@ def andOP(IP1, IP2):
 # Broadcast IP
 
 
-def orOP(IP1, IP2):
+def orop(IP1, IP2):
     """
     This code is based on
     https://github.com/EmreOvunc/Subnetting/blob/master/Subnetting.py
@@ -93,7 +93,7 @@ def orOP(IP1, IP2):
 # Max IP
 
 
-def maxiIP(broadcastIP):
+def maxip(broadcastIP):
     """
     This code is based on
     https://github.com/EmreOvunc/Subnetting/blob/master/Subnetting.py
@@ -115,7 +115,7 @@ def maxiIP(broadcastIP):
 # Min IP
 
 
-def miniIP(networkID):
+def minip(networkID):
     """
     This code is based on
     https://github.com/EmreOvunc/Subnetting/blob/master/Subnetting.py
@@ -164,13 +164,13 @@ def menu():
     """
     # Loop to keep code running while validate false
     while True:
-    option = input(
-        "[1] Calculate available IPs\n"
-        "[2] Determine subnet range\n"
-        "[3] Generate a random IP\n"
-    )
-    # Validate if the user provided a right answer
-    if validation(option):
+        option = input(
+            "[1] Calculate available IPs\n"
+            "[2] Determine subnet range\n"
+            "[3] Generate a random IP\n"
+        )
+        # Validate if the user provided a right answer
+        if validation(option):
             cls_terminal()
             break
 
@@ -210,16 +210,16 @@ def questions2():
     wildcard_binary = find_wildcard(dec2bin(subnet))
     WildCard = convert_decimal(wildcard_binary)
     print("Wildcard:", WildCard)
-    networkID = andOP(ip, subnet)
+    networkID = andop(ip, subnet)
     network_Binary = dec2bin(networkID)
     print("Network ID:", networkID)
-    broadcastIP = orOP(networkID, WildCard)
+    broadcastIP = orop(networkID, WildCard)
     broadcastIP_binary = dec2bin(broadcastIP)
     print("Broadcast IP:", broadcastIP)
-    maxIP = maxiIP(broadcastIP)
+    maxIP = maxip(broadcastIP)
     maxIP_binary = dec2bin(maxIP)
     print("Max. IP:", maxIP)
-    minIP = miniIP(networkID)
+    minIP = minip(networkID)
     minIP_binary = dec2bin(networkID)
     print("Min. IP:", minIP)
 
@@ -230,16 +230,16 @@ def validation(answer):
     """
     try:
         # Check if received the specific value
-        if answer != '1' and answer != '2' and answer != '3':
+        if answer != "1" and answer != "2" and answer != "3":
             # If this is not a valid number you receive a message error
             raise ValueError(
-                f'''
+                f"""
             --------------- WARNING ---------------
             This answer {answer} is incorrect,
             Be sure to type it correctly
             < 1 > or < 2 > or < 3 >
             ----------------------- ---------------
-            '''
+            """
             )
     except ValueError as err:
         # Check if it received a integer number if not receive a message
